@@ -3,10 +3,16 @@
     name: nginx
     update_cache: yes
     state: latest
-  notify: start nginx
+  notify: Start nginx
 
 - name: Configure nginx reverse proxy for node.js app
   copy:
     src: default
     dest: /etc/nginx/sites-available/
-  notify: restart nginx
+  notify: Reload nginx
+
+- name: Create app root directory
+  file:
+    dest: /var/www/app
+    state: directory
+  notify: Reload nginx
