@@ -12,7 +12,7 @@
 			run-parts /etc/logrotate.d/httpd-prerotate; \
 		fi \
 	endscript
-    postrotate
-        [ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`
-    endscript
+	postrotate
+		[ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`
+	endscript
 }
