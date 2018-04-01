@@ -7,9 +7,14 @@
 
 - name: Configure nginx reverse proxy for node.js app
   copy:
-    src: default
+    src: nginx/sites-available/default
     dest: /etc/nginx/sites-available/
   notify: Reload nginx
+
+- name: Configure nginx logrotate
+  copy:
+    src: logrotate.d/nginx
+    dest: /etc/logrotate.d/
 
 - name: Create app root directory
   file:
