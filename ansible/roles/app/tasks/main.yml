@@ -1,0 +1,13 @@
+- name: Clone app repository
+  git:
+    repo: https://github.com/{{account}}/{{repo}}.git
+    dest: /var/www/app
+
+- name: Install app dependencies
+  npm:
+    path: /var/www/app
+
+- name: Start app
+  command: pm2 start index.js --name {{app_name}} -i 0
+  args:
+    chdir: /var/www/app
