@@ -19,3 +19,8 @@
     name: pm2
     global: yes
     production: yes
+  register: pm2_installed
+
+- name: Generate and configure pm2 startup scripts
+  command: pm2 startup
+  when: pm2_installed is succeeded

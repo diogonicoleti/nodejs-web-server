@@ -11,3 +11,6 @@
   command: pm2 start index.js --name {{app_name}} -i 0
   args:
     chdir: /var/www/app
+
+- name: Save current app process list
+  command: pm2 save
